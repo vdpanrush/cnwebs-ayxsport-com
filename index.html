@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 生活与乐趣的桥梁</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fdf0e6 0%, #fce2cf 40%, #fbd5b5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      line-height: 1.7;
+      color: #2a2a2a;
+    }
+    .magazine-wrapper {
+      max-width: 1040px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 40px -10px rgba(140, 80, 40, 0.25);
+      padding: 2.5rem 2rem;
+      transition: all 0.2s ease;
+    }
+
+    /* 首页横幅 hero */
+    .hero {
+      background: linear-gradient(120deg, #fae6d4, #fcddbe);
+      border-radius: 2rem;
+      padding: 2.5rem 1.8rem;
+      margin-bottom: 2.8rem;
+      box-shadow: inset 0 1px 4px rgba(255, 235, 210, 0.7), 0 6px 14px rgba(170, 90, 40, 0.1);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #633c1e;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 2px 6px rgba(255, 210, 170, 0.5);
+    }
+    .hero .subhead {
+      font-size: 1.15rem;
+      color: #7d5539;
+      max-width: 560px;
+      margin: 0.6rem auto 0;
+      border-top: 1px dashed #c8a07e;
+      padding-top: 0.8rem;
+    }
+
+    /* 背景说明卡片 */
+    .bg-note {
+      background: #ffffffd9;
+      backdrop-filter: blur(6px);
+      border-radius: 1.5rem;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2.2rem;
+      border-left: 6px solid #df9f75;
+      box-shadow: 0 6px 18px rgba(155, 95, 55, 0.08);
+    }
+    .bg-note p {
+      font-size: 1rem;
+      color: #3d2b1e;
+    }
+
+    /* 三段自然介绍 grid */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .intro-card {
+      background: #fffbf7;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 8px 20px -6px #d1aa8b50;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px -6px #b47f5f70;
+    }
+    .intro-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #784f2b;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px dotted #eac9b1;
+      padding-bottom: 0.4rem;
+    }
+    .intro-card p {
+      font-size: 0.95rem;
+      color: #3f2d1f;
+    }
+    .intro-card .tag {
+      display: inline-block;
+      background: #edd7c5;
+      border-radius: 40px;
+      padding: 0.1rem 0.9rem;
+      font-size: 0.75rem;
+      color: #4d311d;
+      margin-top: 0.8rem;
+    }
+
+    /* 页尾访问提示 (faq风格) */
+    .footer-prompt {
+      background: #f9ede1;
+      border-radius: 2rem;
+      padding: 1.6rem 2rem;
+      margin-top: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #e7cdb5;
+    }
+    .footer-prompt .question {
+      font-weight: 500;
+      color: #55371e;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+    .footer-prompt .answer {
+      color: #2b1d12;
+      background: white;
+      padding: 0.5rem 1.6rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 8px #d1a78633;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-prompt .answer a {
+      color: #8a4f28;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.15rem 0.7rem;
+      background: #faeedf;
+      border-radius: 30px;
+      transition: background 0.2s;
+      display: inline-block;
+      font-size: 0.95rem;
+      border: 1px solid #dbb89b;
+    }
+    .footer-prompt .answer a:hover {
+      background: #dfb693;
+      color: #2e1b0d;
+      border-color: #b47f5f;
+    }
+
+    /* 底部 */
+    .micro-footer {
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      text-align: center;
+      color: #7b624b;
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .magazine-wrapper {
+        padding: 2rem 1.2rem;
+      }
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .footer-prompt {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.8rem 1rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .bg-note {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="magazine-wrapper">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+      <h1>爱游戏 · 发现你的节奏</h1>
+      <div class="subhead">
+        从休闲到沉浸，每一个选择都自然贴近日常
+      </div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="bg-note">
+      <p><strong>关于这个平台</strong> —— 无论是午后的短暂时光，还是周末的安静角落，<a href="https://cnwebs-ayxsport.com" style="color:#784f2b; font-weight: 500;">爱游戏</a> 希望成为你打开放松的一种自然方式。页面简洁、内容聚焦，没有多余的花哨，只有你真正需要的选择和引导。你可以把它看作一个轻量起点，从这里找到与你合拍的娱乐节奏。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>🎯 一眼识别</h3>
+        <p>打开页面，标题、分类、关键入口都摆在明处。你不需要反复琢磨“我该点哪里”——所有意图都清晰排列。名称本身已经说明了一切：<a href="https://cnwebs-ayxsport.com" style="color:#8a4f28; font-weight:500;">爱游戏</a>，指向的就是你脑海里最先跳出来的那个想法。</p>
+        <span class="tag">快速定位</span>
+      </div>
+      <div class="intro-card">
+        <h3>🌿 日常陪伴感</h3>
+        <p>没有复杂的注册门槛，也没有夸张的承诺。这个站点更像一个安静的公园长椅——你想坐下来歇一歇，或者找点新鲜事做，它就在那里。游戏也好，资讯也好，全都围绕“轻松参与”来设计。</p>
+        <span class="tag">低门槛</span>
+      </div>
+      <div class="intro-card">
+        <h3>📌 场景融合</h3>
+        <p>通勤路上、睡前十分钟、朋友聚会间隙……<a href="https://cnwebs-ayxsport.com" style="color:#8a4f28; font-weight:500;">爱游戏</a> 的内容不挑场合。不需要高性能设备，不需要大块时间，你按照自己的步调来就好。这个页面本身也是这种理念的缩影：安静，直接，不打扰。</p>
+        <span class="tag">随时随地</span>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 (FAQ 摘要) -->
+    <div class="footer-prompt">
+      <span class="question">🤔 如何开始？</span>
+      <span class="answer">
+        直接前往 <a href="https://cnwebs-ayxsport.com">爱游戏</a> ，所有内容一目了然
+      </span>
+    </div>
+
+    <!-- 小彩蛋/微信息 -->
+    <div class="micro-footer">
+      一个安静的起点 · 没有负担的探索
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vdpanrush.github.io/cnwebs-ayxsport-com/sitemap.xml
